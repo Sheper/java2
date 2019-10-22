@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>    
+        <title>User Registration Form</title>
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+    </h:head>
+    <h:body>
+        <h:form id="form" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-sm-4"></div>
+                <div  class="col-sm-4">
+                    <h2 style="text-align: center">Registrate!!</h2>
+                </div>
+            </div>
+            <hr/>
+            <div class="form-group">
+                <h:outputLabel for="username" class="control-label col-sm-4">Nombre de Usuario</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="nombre-id" value="#{userBean.user.nombre}" class="form-control" validatorMessage="El nombre es requerido" >
+                        <f:validateRequired />
+                    </h:inputText>
+                    <h:message for="nombre-id" style="color:red" />
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="email" class="control-label col-sm-4">E-mail</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="email-id" value="#{userBean.user.email}" class="form-control" validatorMessage="Email es requerido">
+                        <f:validateRequired/>
+                    </h:inputText>
+                    <h:message for="email-id" style="color:red" />
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="password" class="control-label col-sm-4">Password</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputSecret id="password-id" value="#{userBean.user.password}" class="form-control" validatorMessage="El Password es requerida">
+                        <f:validateRequired/>
+                    </h:inputSecret>
+                    <h:message for="password-id" style="color:red" />
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="sexo" class="control-label col-sm-4">Sexo</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:selectOneRadio value="#{userBean.user.sexo}" validatorMessage="El sexo es requerido" id="sexo-id">
+                        <f:selectItem itemValue="M" itemLabel="Masculino" />
+                        <f:selectItem itemValue="F" itemLabel="Femenino" />
+                        <f:validateRequired/>
+                    </h:selectOneRadio>
+                    <h:message for="sexo-id" style="color:red" />
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="pais" class="control-label col-sm-4">País</h:outputLabel>
+                <div class="col-sm-4">
+                	<h:selectOneMenu value="#{userBean.user.pais}" cols="50" rows="5" class="form-control" id="pais-id" validatorMessage="El país es requerido">                    
+                    	<f:selectItem itemValue="" itemLabel="Seleccione un país..." />
+                    	<f:selectItem itemValue="E" itemLabel="Ecuador" />
+                        <f:selectItem itemValue="C" itemLabel="Colombia" />
+                        <f:selectItem itemValue="P" itemLabel="Peru" />
+                        <f:selectItem itemValue="B" itemLabel="Bolivia" />
+                        <f:selectItem itemValue="Br" itemLabel="Brasil" />
+                        <f:selectItem itemValue="A" itemLabel="Argentina" />
+                        <f:validateRequired/>
+                    </h:selectOneMenu>
+                    <h:message for="pais-id" style="color:red" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <div class="col-sm-2">
+                        <h:commandButton value="Save" action="#{userBean.save}" class="btn btn-success" style="width: 80px;"></h:commandButton>
+                    </div>
+                    <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-2">
+                        <h:link outcome="index" value="View Users Record List" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </h:body>
+</html>
